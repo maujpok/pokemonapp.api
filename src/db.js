@@ -5,17 +5,16 @@ const path = require('path');
 // const {DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME} = process.env;
 const {DATABASE_URL} = process.env;
 
-const dburl = "postgres://xghpoolioedxlc:9fc26cd8321f2442b3f1ddca046b9e1304ffd212c29606dada59801576c3693b@ec2-3-222-49-168.compute-1.amazonaws.com:5432/d4qn3eeujfo96v";
-
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
-  // const sequelize = new Sequelize(DATABASE_URL, {
-  const sequelize = new Sequelize(dburl, {
+  const sequelize = new Sequelize(DATABASE_URL, {
+  // const sequelize = new Sequelize(dburl, {
+    native: true,
     dialect: 'postgres',
+    ssl: true,
     dialectOptions: {
       ssl: true
     },
-    logging: console.log('connected to DB'),
-    native: false
+    logging: console.log(`connected to ${DATABASE_URL.slice(0,10)}`),
 });
 const basename = path.basename(__filename);
 
