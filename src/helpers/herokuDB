@@ -1,7 +1,0 @@
-# DB_HOST=ec2-18-215-96-54.compute-1.amazonaws.com
-# DB_NAME=dbj3t0f80davfn
-# DB_USER=kewzzarqverzon
-# DB_PORT=5432
-# DB_PASSWORD=59d5a054e67c8bf5c5dfcd91e607a0706b8507ec19833567e05ce56d4b541d5f
-# DB_URI=postgres://kewzzarqverzon:59d5a054e67c8bf5c5dfcd91e607a0706b8507ec19833567e05ce56d4b541d5f@ec2-18-215-96-54.compute-1.amazonaws.com:5432/dbj3t0f80davfn
-# DB_CLI=heroku pg:psql postgresql-animate-10201 --app pokemon-maujpok
