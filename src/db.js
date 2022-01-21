@@ -10,8 +10,12 @@ const dburl = "postgres://xghpoolioedxlc:9fc26cd8321f2442b3f1ddca046b9e1304ffd21
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
   // const sequelize = new Sequelize(DATABASE_URL, {
   const sequelize = new Sequelize(dburl, {
-  logging: console.log('connected to DB'),
-  native: false
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true
+    },
+    logging: console.log('connected to DB'),
+    native: false
 });
 const basename = path.basename(__filename);
 
