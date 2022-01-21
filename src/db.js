@@ -2,19 +2,26 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-// const {DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME} = process.env;
-const {DATABASE_URL} = process.env;
+const {DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME} = process.env;
 
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
-  const sequelize = new Sequelize(DATABASE_URL, {
+  const sequelize = new Sequelize({
   // const sequelize = new Sequelize(dburl, {
-    native: true,
+    database: DB_NAME,
+    username: DB_USER,
+    password: DB_PASSWORD,
+    host: DB_HOST,
+    port: DB_PORT,
+    // native: true,
     dialect: 'postgres',
-    ssl: true,
+    // ssl: true,
     dialectOptions: {
-      ssl: true
+      ssl: {
+        require: true, // This will help you. But you will see nwe error
+        rejectUnauthorized: false // This line will fix new error
+      }
     },
-    logging: console.log(`connected to ${DATABASE_URL.slice(0,10)}`),
+    logging: console.log(`connected`)
 });
 const basename = path.basename(__filename);
 
